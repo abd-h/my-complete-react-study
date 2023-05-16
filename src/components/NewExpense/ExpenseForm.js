@@ -63,7 +63,7 @@ const ExpenseForm = (props) => {
     setAddExpnese(true);
     const expenseData = {
       title: enteredTitle,
-      amount: '$' + enteredAmount,
+      amount: "$" + enteredAmount,
       date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData);
@@ -79,7 +79,7 @@ const ExpenseForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      {addNewExpense === false ? (
+      {!addNewExpense && (
         <div className="new-expense_controls">
           <div className="new-expense__control">
             <label htmlFor="title">Title</label>
@@ -116,7 +116,8 @@ const ExpenseForm = (props) => {
             Add Expense
           </button>
         </div>
-      ) : (
+      )}
+      {addNewExpense && (
         <button onClick={addNewExpenses}>Add New Expense</button>
       )}
     </form>
