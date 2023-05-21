@@ -1,47 +1,33 @@
-import React, { useState} from "react";
-import Expenses from './components/Expenses/Expenses'
-import "./components/Expenses/ExpenseItem.css";
-import NewExpense from "./components/NewExpense/NewExpense";
+import React, { useState } from "react";
 
-const DUMMY_EXPENSES = [
-  {
-    id: "e1",
-    title: "Toilet Paper",
-    amount: "$94.00",
-    date: new Date(2021, 5, 12),
-  },
-  {
-    id: "e2",
-    title: "New TV",
-    amount: "$799.00",
-    date: new Date(2020, 2, 12),
-  },
-  {
-    id: "e3",
-    title: "Car Insurance",
-    amount: '$294.0',
-    date: new Date(2021, 5, 12),
-  },
-  {
-    id: "e4",
-    title: "New Desk (Wooden)",
-    amount: "$450",
-    date: new Date(2021, 6, 11),
-  },
-];
+import "../src/index.css";
+import Expenses from "./components/Expenses.js";
+
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const expense = [
+    {
+      id: "e1",
+      title: "Nisan Leaf",
+      date: new Date(2019, 8, 21),
+      amount: 35000,
+    },
+    {
+      id: "e2",
+      title: "Toyota Corrola",
+      date: new Date(2020, 2, 10),
+      amount: 18000,
+    },
+    { id: "e3", title: "Vauxhal", date: new Date(2022, 8, 23), amount: 19000 },
+    { id: "e4", title: "VW", date: new Date(2021, 3, 13), amount: 40000 },
+  ];
 
-  const addExpenseHandler = (expense) => {
-   return setExpenses(prevExpenses => [expense, ...prevExpenses])
-  }
+  const expenses = expense.map((item) => item);
+  console.log(expenses);
   return (
     <div className="App">
-      <h1>Here we go</h1>
-      <NewExpense onAddExpense={addExpenseHandler}/>
-      <Expenses data={expenses} />
+      <Expenses expenses={expenses} />
     </div>
   );
-}
+};
 
 export default App;
